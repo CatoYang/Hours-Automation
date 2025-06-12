@@ -1,20 +1,20 @@
 # Hours Automation Project
 
-This is a repository of code for automation of hours processing.
-The hours processed are for RSAF F15 propulsion flight and split into two branchs. SG and PCV
-The code listed here is mainly for PCV, SG hours is a fork and due to lack of processes have different code and is slightly deprecated.
+This is a repository of code for automation of hours processing.  
+The hours processed are for RSAF F15 propulsion flight and split into two branchs. SG and PCV  
+The code listed here is mainly for PCV, SG hours is a fork and due to lack of processes have different code and is slightly deprecated.  
 
-The project mainly focuses on VBA code but a python project is included that works on sheet formats pre 2025.
-Due to local machines unable to run python, users will have to set up a executable or docker for the legacy code as well has handle the dependencies.
-As the old python project is not in use anymore, it will not be explained hereforth.
-The code is found in process.py under _src
+The project mainly focuses on VBA code but a python project is included that works on sheet formats pre 2025.  
+Due to local machines unable to run python, users will have to set up a executable or docker for the legacy code as well has handle the dependencies.  
+As the old python project is not in use anymore, it will not be explained hereforth.  
+The code is found in process.py under _src  
 
 # VBA project overview
 The project is 100% VBA code and revolves around 3 main macros and one module from which functions are listed
 
-All of the _Update macros have code to timestamp when they are run in Daily_Hr
-The .cls files are for the 
-
+All of the _Update macros have code to timestamp when they are run in Daily_Hr  
+The .cls files are a way for buttons to be implemented for older versions of excel
+```
 Hours
 ├── AFH_Update          # Checks and updates AFH values then runs SyncFillColours
 ├── TTC_Update          # Checks Values and Time then overwrites values
@@ -25,7 +25,7 @@ Hours
 ├── Sheet1.cls
 ├── Sheet2.cls
 ├── Sheet10.cls
-
+```
 # Using the code
 Its easier and faster to copy code directly into the VBA editor if changes are made here and you need to update.
 
@@ -34,13 +34,14 @@ to do
 
 
 # Development Notes
-Python is not available on local machines. Don't Bother with trying to use it.
-Because there are many machines that have different specifications, there are a few coding differences when compared to modern code
-- we are unable to call the entire macro without using thisworkbook.thisworkbook.module.
-- Certain data validations and functions are not modernised. e.g. we use vlookup instead of xlookup
-- Xlookup is not available on 2019 excel (Our version is not the enterprise version?!)
-The earliest version of Excel backtested is Excel 2010. The VBA macros do not work on Excel 2007.
-Certain individuals are offended that this project exists. Becareful and employ image control when working with NCOs.
+Python is not available on local machines. Don't Bother with trying to use it.  
+Because there are many machines that have different specifications, there are a few coding differences when compared to modern code.  
+1. we are unable to call the entire macro without using thisworkbook.thisworkbook.module.
+2. Certain data validations and functions are not modernised. e.g. we use vlookup instead of xlookup
+3. Xlookup is not available on 2019 excel (Our version is not the enterprise version?!)
+
+The earliest version of Excel backtested is Excel 2010. The VBA macros do not work on Excel 2007.  
+Certain individuals are offended that this project exists. Becareful and employ image control when working with NCOs.  
 Most personnel are unable to comprehend VBA, but some NSmen are actually savants with it (NSman Benson could automate ES with VBA code!!). Talk to people and seek their strengths.
 
 # Contribution
@@ -49,7 +50,8 @@ Most personnel are unable to comprehend VBA, but some NSmen are actually savants
 - Commit your changes
 - Push to the branch
 - Open a Pull Request
-I will perform code reviews for this project as long as i am able.
+
+I will perform code reviews for this project as long as i am able.  
 Alternatively just send me the file to edit directly if you do not know git.
 
 # Contact
