@@ -29,6 +29,7 @@ Sub LRU_Update()
     Next i
 
     ' Reset fill highlights in designated columns
+    LRU.Range("B:V").Interior.ColorIndex = xlNone
     LRU.Range("E2:E" & LRUlast & ",K2:K" & LRUlast).Interior.Color = RGB(255, 255, 0)
 
     For j = 2 To LRUlast
@@ -39,7 +40,9 @@ Sub LRU_Update()
             If Not IsError(PSURow) Then
                 If PSU.Cells(PSURow, 10).Value > LRU.Cells(j, 11).Value Then
                     LRU.Rows(j).Columns("B:V").Value = PSU.Rows(PSURow).Columns("A:U").Value
-                    LRU.Cells(j, 11).Interior.Color = RGB(51, 204, 51)
+                    LRU.Rows(j).Columns("B:V").Interior.Color = RGB(51, 204, 51)
+                    LRU.Cells(j, 5).Interior.Color = RGB(255, 255, 0)   ' Column E
+                    LRU.Cells(j, 11).Interior.Color = RGB(255, 255, 0)  ' Column K
                     LRU.Cells(j, 23).Value = Now
                     LRU.Cells(j, 23).NumberFormat = "dd/mm/yyyy hh:mm"
                     LRU.Cells(j, 25).Value = LRU.Cells(j, 26).Value

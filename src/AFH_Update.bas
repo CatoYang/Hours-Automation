@@ -13,6 +13,10 @@ Sub AFH_Update()
     
     Set AFH = ThisWorkbook.Sheets("Update List")
     
+    'Reset colour scheme and repaint cell 6
+    AFH.Range(AFH.Cells(2, 2), AFH.Cells(80, 6)).Interior.ColorIndex = xlNone
+    AFH.Range(AFH.Cells(2, 6), AFH.Cells(80, 6)).Interior.Color = RGB(255, 255, 0)
+    
     'We actually only use 2 to 40, the rest of the rows are future contingency
     For i = 2 To 80
         newAFH = AFH.Cells(i, 6).Value
@@ -22,21 +26,20 @@ Sub AFH_Update()
                 AFH.Cells(i, 5).Value = Now
                 AFH.Cells(i, 5).NumberFormat = "dd/mm/yyyy hh:mm"
                 'Colours the Cell Green to show an increase
-                AFH.Cells(i, 6).Interior.Color = RGB(146, 208, 80)
+                AFH.Range(AFH.Cells(i, 2), AFH.Cells(i, 6)).Interior.Color = RGB(146, 208, 80)
                 If (newAFH - oldAFH) > 6 Then
                     'Colours the Cell Purple to show Anomalous increase
-                    AFH.Cells(i, 6).Interior.Color = RGB(225, 153, 225)
+                    AFH.Range(AFH.Cells(i, 2), AFH.Cells(i, 6)).Interior.Color = RGB(225, 153, 225)
                     MsgBox "Warning: Anomalous input noted (AFH Increase is Greater than 6.00). AFH overwriten, check value before saving"
                 End If
-            ElseIf newAFH = oldAFH Then
-                'Colours the Cell Yellow to show no change
-                AFH.Cells(i, 6).Interior.Color = RGB(255, 255, 102)
-            Else
+            ElseIf newAFH < oldAFH Then
                 'Colours the Cell Red to show an Erronous input, a decrease in value
-                AFH.Cells(i, 6).Interior.Color = RGB(255, 0, 0)
+                AFH.Range(AFH.Cells(i, 2), AFH.Cells(i, 6)).Interior.Color = RGB(255, 0, 0)
                 MsgBox "Warning: Lower AFH Input noted. AFH not overwritten. Check red shaded boxes"
             End If
     Next i
+    
+    SyncFillColors
     
     ThisWorkbook.Sheets("Daily_Hr").Range("F3").Value = Now
     ThisWorkbook.Sheets("Daily_Hr").Range("F3").NumberFormat = "dd/mm/yyyy"
