@@ -37,8 +37,8 @@ Sub TTC_Update()
         End If
     Next j
     
-    'Reset Fill colour
-    wsEngines.Range("B2:AV117").Interior.ColorIndex = xlNone
+    'Reset Fill colour, range originally 117; increased to 150 to accomodate potential new engines
+    wsEngines.Range("B2:AV150").Interior.ColorIndex = xlNone
     
     For i = 2 To Engineslast
         esnEngines = wsEngines.Cells(i, 2).Value
@@ -46,7 +46,7 @@ Sub TTC_Update()
             Dim TTC As Variant
             TTC = TTCData(esnEngines)
             
-            ' Column 3 = Download time , 18 = COT
+            ' Checks for EOT and Download Time
             If TTC(1, 2) > wsEngines.Cells(i, 3).Value And _
                TTC(1, 17) > wsEngines.Cells(i, 18).Value Then
                 
