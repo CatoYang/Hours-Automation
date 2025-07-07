@@ -148,5 +148,4 @@ Alternatively contact me directly and we can sort out the changes together
 
 # Contact
 Message me directly on Whatsapp or Telegram.  
-Im less responsive on emails and git.  
-Yang Peng - yangcymbus@gmail.com
+Alternatively contact via github or my email
